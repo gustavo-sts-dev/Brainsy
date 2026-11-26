@@ -1,4 +1,8 @@
 import z from "zod";
+import path from "node:path";
+
+if (process.env.NODE_ENV !== "production")
+  process.loadEnvFile(path.join(import.meta.dirname, "../../.env.local"));
 
 const env = z
   .object({

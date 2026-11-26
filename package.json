@@ -6,7 +6,8 @@
     "format": "prettier . --write && eslint --fix ."
   },
   "imports": {
-    "#config/*": "./src/config/*"
+    "#src/*": "./src/*.ts",
+    "#config/*": "./src/config/*.ts"
   },
   "author": "Gustavo da Silva Santos",
   "license": "UNLICENSED",

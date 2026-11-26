@@ -2,7 +2,7 @@ import fastify from "fastify";
 import helmet from "@fastify/helmet";
 import cookie from "@fastify/cookie";
 import cors from "@fastify/cors";
-import { env } from "#config/env.config.ts";
+import { env } from "#config/env.config";
 
 function buildApp(opts = {}) {
   const app = fastify(opts);
