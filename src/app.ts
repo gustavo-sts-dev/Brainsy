@@ -8,11 +8,12 @@ import {
   type ZodTypeProvider,
   validatorCompiler,
   serializerCompiler,
+  jsonSchemaTransform,
 } from "@fastify/type-provider-zod";
 import z from "zod";
 import { env } from "#config/env.config";
 
-function buildApp(opts = {}) {
+async function buildApp(opts = {}) {
   const app = fastify(opts).withTypeProvider<ZodTypeProvider>();
 
   app.setValidatorCompiler(validatorCompiler);
@@ -55,6 +56,7 @@ function buildApp(opts = {}) {
           version: "1.0.0",
         },
       },
+      transform: jsonSchemaTransform,
     });
 
     await app.register(swaggerUi, {
@@ -62,7 +64,7 @@ function buildApp(opts = {}) {
     });
   }
 
-  if (env.NODE_ENV === "development") registerSwagger();
+  if (env.NODE_ENV === "development") await registerSwagger();
 
   app.get(
     "/health",
