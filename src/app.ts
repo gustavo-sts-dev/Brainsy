@@ -2,11 +2,12 @@ import fastify from "fastify";
 import helmet from "@fastify/helmet";
 import cookie from "@fastify/cookie";
 import cors from "@fastify/cors";
+import { env } from "#config/env.config.ts";
 
 function buildApp(opts = {}) {
   const app = fastify(opts);
 
-  const origins = process.env.ORIGINS?.split(",").filter(Boolean);
+  const origins = env.ORIGINS.filter(Boolean);
 
   app.register(helmet, {
     contentSecurityPolicy: {
@@ -25,7 +26,7 @@ function buildApp(opts = {}) {
     },
   });
   app.register(cookie, {
-    secret: process.env.COOKIE_SECRET,
+    secret: env.COOKIE_SECRET,
   });
   app.register(cors, {
     origin(origin, callback) {

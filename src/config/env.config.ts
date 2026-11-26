@@ -1,0 +1,17 @@
+import z from "zod";
+
+const env = z
+  .object({
+    NODE_ENV: z.enum(["test", "devlopment", "production"]),
+    PORT: z.coerce.number().min(1).max(10000),
+    ORIGINS: z.string().transform((data) => {
+      const origins = data.split(",");
+      const invalid = origins.find((origin) => !origin.startsWith("https://"));
+      if (invalid) throw new Error(`Origem http não permitida: ${invalid}.`);
+      return origins;
+    }),
+    COOKIE_SECRET: z.string().min(32),
+  })
+  .parse(process.env);
+
+export { env };

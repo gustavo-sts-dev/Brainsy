@@ -5,6 +5,9 @@
     "dev": "node --watch src/server.ts",
     "format": "prettier . --write && eslint --fix ."
   },
+  "imports": {
+    "#config/*": "./src/config/*"
+  },
   "author": "Gustavo da Silva Santos",
   "license": "UNLICENSED",
   "devEngines": {
@@ -20,7 +23,8 @@
     "@fastify/cookie": "^11.1.5",
     "@fastify/cors": "^11.4.3",
     "@fastify/helmet": "^13.2.0",
-    "fastify": "^5.12.8"
+    "fastify": "^5.12.8",
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
