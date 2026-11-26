@@ -2,7 +2,8 @@
   "name": "api",
   "version": "1.0.0",
   "scripts": {
-    "dev": "node --watch src/server.ts"
+    "dev": "node --watch src/server.ts",
+    "format": "prettier . --write && eslint --fix ."
   },
   "author": "Gustavo da Silva Santos",
   "license": "UNLICENSED",
@@ -19,6 +20,13 @@
     "fastify": "^5.12.8"
   },
   "devDependencies": {
-    "@types/node": "^26.6.10"
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^2.1.1",
+    "@types/node": "^26.6.10",
+    "eslint": "^10.15.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.14.0",
+    "prettier": "3.10.1",
+    "typescript-eslint": "^8.74.0"
   }
 }
