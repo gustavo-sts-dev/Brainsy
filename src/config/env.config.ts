@@ -6,11 +6,11 @@ if (process.env.NODE_ENV !== "production")
 
 const env = z
   .object({
-    NODE_ENV: z.enum(["test", "devlopment", "production"]),
+    NODE_ENV: z.enum(["test", "development", "production"]),
     PORT: z.coerce.number().min(1).max(10000),
     ORIGINS: z.string().transform((data) => {
       const origins = data.split(",");
-      const invalid = origins.find((origin) => !origin.startsWith("https://"));
+      const invalid = origins.find((origin) => !origin.startsWith("http://"));
       if (invalid) throw new Error(`Origem http não permitida: ${invalid}.`);
       return origins;
     }),
